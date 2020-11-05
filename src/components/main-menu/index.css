@@ -1,0 +1,21 @@
+.list {
+    list-style: none;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.list-item {
+    margin-bottom: .5rem;
+}
+
+.list-item--isActive a {
+    color: tomato;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: #333;
+}
+.list-item a:hover {
+    color: blue;
+}
