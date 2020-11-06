@@ -15,7 +15,7 @@ const colors = ['primary', 'green', 'red', 'orange'];
 const sizes = ['small', 'medium', 'large'];
 
 function App() {
-  const [color, setColor] = useState('primary');
+  const [color, setColor] = useState('red');
   const [size, setSize] = useState(sizes[1]);
 
   function handleChange(e) {
