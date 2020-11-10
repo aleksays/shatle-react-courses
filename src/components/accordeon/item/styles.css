@@ -1,0 +1,129 @@
+.accordeon__item {
+  border-bottom: 1px solid var(--grey-light-color);
+}
+.accordeon__item:last-child {
+  border-bottom: none;
+}
+
+.accordeon__item--small {
+  padding-bottom: 0.25rem;
+}
+.accordeon__item--medium {
+  padding-bottom: 0.5rem;
+}
+.accordeon__item--large {
+  padding-bottom: 1rem;
+}
+
+.accordeon__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  background: var(--light-color);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  font-weight: 200;
+}
+
+.accordeon__toggle--small {
+  font-size: 0.85rem;
+  padding: 0.5rem 0 0.25rem 0;
+}
+.accordeon__toggle--medium {
+  font-size: 1.2rem;
+  padding: 1rem 0 0.5rem 0;
+}
+.accordeon__toggle--large {
+  font-size: 1.75rem;
+  padding: 2rem 0 1rem 0;
+}
+
+.accordeon__toggle--red {
+  color: var(--red-color);
+}
+.accordeon__toggle--red .accordeon__icon:after,
+.accordeon__toggle--red .accordeon__icon:before {
+  background-color: var(--red-color);
+}
+
+.accordeon__toggle--primary {
+  color: var(--primary-color);
+}
+.accordeon__toggle--primary .accordeon__icon:after,
+.accordeon__toggle--primary .accordeon__icon:before {
+  background-color: var(--primary-color);
+}
+
+.accordeon__toggle--green {
+  color: var(--green-color);
+}
+.accordeon__toggle--green .accordeon__icon:after,
+.accordeon__toggle--green .accordeon__icon:before {
+  background-color: var(--green-color);
+}
+
+.accordeon__toggle--orange {
+  color: var(--orange-color);
+}
+.accordeon__toggle--orange .accordeon__icon:after,
+.accordeon__toggle--orange .accordeon__icon:before {
+  background-color: var(--orange-color);
+}
+
+.accordeon__icon {
+  position: absolute;
+  right: 2px;
+  transform-origin: 0 20%;
+  transform: translate(-6px, 0) rotateX(180deg);
+  margin-top: 4px;
+  transition: all 270ms ease-out;
+}
+.accordeon__icon--opened {
+  transform: translate(-6px, 0) rotateX(0);
+  margin-top: -2px;
+}
+
+.accordeon__icon:after, .accordeon__icon:before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 9px;
+}
+
+.accordeon__icon:after {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+.accordeon__icon:before {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+
+.accordeon__text {
+  display: block;
+  max-height: 0;
+  color: var(--grey-color);
+  text-align: left;
+  overflow: hidden;
+  transition: max-height 250ms ease-in-out, opacity 250ms ease-in-out;
+  will-change: max-height, opacity;
+  opacity: 0;
+  line-height: 1.87;
+}
+
+.accordeon__text--small {
+  font-size: 0.75rem;
+}
+.accordeon__text--medium {
+  font-size: 1rem;
+}
+.accordeon__text--large {
+  font-size: 1.5rem;
+}
+
+.accordeon__text--visible {
+  max-height: 350px;
+  opacity: 1;
+}
