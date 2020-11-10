@@ -17,9 +17,9 @@ export default class Accordeon extends PureComponent {
         <h4 className={`accordeon__title accordeon__title--${size}`}>
           {title}
         </h4>
-        {list.map((listItem) => (
+        {list.map((listItem, index) => (
           <Item
-            key={listItem.id}
+            key={`listItem.title--${String(index)}`}
             title={listItem.title}
             size={size}
             color={color}

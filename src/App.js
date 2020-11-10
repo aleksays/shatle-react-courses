@@ -3,6 +3,7 @@ import Dropdown from './components/dropdown';
 import Box from './components/common/box';
 import Accordeon from './components/accordeon';
 import accordeonList from './data/accordeonList.json';
+import styles from './styles.module.css';
 import './App.css';
 
 const list = [
@@ -16,10 +17,11 @@ const sizes = ['small', 'medium', 'large'];
 
 function App() {
   const [color, setColor] = useState('red');
+  const [title, setTitle] = useState('React is Awesome');
   const [size, setSize] = useState(sizes[1]);
 
-  function handleChange(e) {
-    setSize(e.target.value);
+  function handleChange(event, setState) {
+    setState(event.target.value);
   }
 
   return (
@@ -28,6 +30,12 @@ function App() {
       <Dropdown
         list={list}
       />
+    </Box>
+
+    <Box title="Css Modules">
+      <div className={styles.somediv}>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum a aut consectetur. Distinctio nesciunt aperiam aliquam, eius reiciendis praesentium architecto sit, in odit modi vero?
+      </div>
     </Box>
 
     <Box title="Accordeon">
@@ -45,9 +53,15 @@ function App() {
             />
           ))}
         </div>
+        <label>
+            Title:
+            <div>
+              <input type="text" onChange={(e) => handleChange(e, setTitle)} value={title} />
+            </div>
+        </label>
         <label className="size-select">
             Size: 
-            <select name="accordeonSize" onChange={handleChange} className="select">
+            <select name="accordeonSize" onChange={(e) => handleChange(e, setSize)} className="select">
               {sizes.map((sizeName) => (
                 <option value={sizeName} selected={sizeName === size}>{sizeName}</option>
               ))}
@@ -56,7 +70,7 @@ function App() {
       </div>
       <Accordeon
         list={accordeonList}
-        title="React is Awesome"
+        title={title}
         color={color}
         size={size}
       />
