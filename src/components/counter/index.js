@@ -1,71 +1,49 @@
-// import PropTypes from 'prop-types';
-// export default function Counter({ count, size, color }) {
-//     const modifedCount = count + 1;
-//     const styles = {
-//         fontSize: `${size}px`,
-//     };
-//     const propColor = color === 'red' ? 'tomato' : 'green';
-//     return (
-//         <div className={`counter ${propColor}`} style={styles}>
-//             {modifedCount}
-//         </div>
-//     );
-// };
+import { useState, useEffect, useCallback } from 'react';
+import Button from '../common/button';
 
-// Counter.propTypes = {
-//     count: PropTypes.number,
-//     size: PropTypes.number,
-//     color: PropTypes.string,
-// };
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  const [color, setColor] = useState('black');
+  const [testState, setTestState] = useState('not tested');
 
 
-import { Component } from 'react'; 
-export default class Counter extends Component {
-    constructor(props) {
-        super(props);
+  console.log('render component');
 
-        this.state = {
-            count: 0,
-            name: ''
-        };
-    }
+  useEffect(() => {
+    document.title = `Clicked ${count} times. Current color is: ${color}`;
+    console.log('render useEffect');
+  }, [count, color]);
 
-    setCountToOne = () => {
-        this.setState({ count: 1 })
-    }
+  const increment = useCallback(() => {
+    setCount(count + 1);
+  }, [setCount, count]);
 
-    changeName = () => {
-        this.setState({ name: 'Alex' });
-    };
+  const decrement = () => {
+    setCount(count - 1);
+  };
 
-    // componentDidMount() {
-    //     this.setCountToOne();
-    // }
+  const toggleColor = () => {
+    const colorToSet = color === 'black' ? 'red' : 'black';
+    setColor(colorToSet);
+  }
 
-    render() {
-        const { count } = this.props;
-        return (
-            <div className="wrapper">
-                <h3>Class Counter</h3>
-                <h5>State count</h5>
-                <div className='counter'>{this.state.count}</div>
-                <button type="button" onClick={this.setCountToOne}>Plus one</button>
-                <h5>Prop count</h5>
-                <div className="counter">{count}</div>
+  const toggleTest = () => {
+    const test = testState === 'tested' ? 'not tested' : 'tested';
+    setTestState(test);
+  }
 
-                <h2>My name is {this.state.name || 'Unknown'}</h2>
-                <button type="button" onClick={this.changeName}>Change name</button>
-            </div>
-        );
-    }
+  return (
+    <div className="wrapper">
+      <h3>Functional Counter</h3>
+      <div className="counter">{count}</div>
+      <Button type="button" onClick={increment}>+ Increment</Button>
+      <Button type="button" onClick={decrement}>- Decrement</Button>
+      <h4>Color: {color}</h4>
+      <Button type="button" onClick={toggleColor}>Change color</Button>
+      <hr/>
+      <Button type="button" onClick={toggleTest}>Test state</Button>
+    </div>
+  );
 };
 
-
-// const Counter = ({ count }) => (
-//     <div className="wrapper">
-//         <h3>Functional Counter</h3>
-//         <div className="counter">{count}</div>
-//     </div>
-// );
-
-// export default Counter;
+export default Counter;

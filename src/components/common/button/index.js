@@ -11,9 +11,9 @@ export default class Button extends Component {
     }
 
     render() {
-        const { children, type } = this.props;
+        const { children, type, ...restProps } = this.props;
         return (
-            <button type={type}>{children}</button>
+            <button {...restProps} type={type}>{children}</button>
         );
     }
 };

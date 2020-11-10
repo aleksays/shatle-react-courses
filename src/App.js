@@ -3,6 +3,7 @@ import Dropdown from './components/dropdown';
 import Box from './components/common/box';
 import Accordeon from './components/accordeon';
 import accordeonList from './data/accordeonList.json';
+import Counter from './components/counter';
 import styles from './styles.module.css';
 import './App.css';
 
@@ -41,8 +42,9 @@ function App() {
     <Box title="Accordeon">
       <div className="accordeon-toolbar">
         <div className="picker">
-          {colors.map((colorName) => (
+          {colors.map((colorName, index) => (
             <button
+              key={`${colorName}-${String(index)}`}
               type="button"
               className={`
                 picker__item
@@ -62,8 +64,8 @@ function App() {
         <label className="size-select">
             Size: 
             <select name="accordeonSize" onChange={(e) => handleChange(e, setSize)} className="select">
-              {sizes.map((sizeName) => (
-                <option value={sizeName} selected={sizeName === size}>{sizeName}</option>
+              {sizes.map((sizeName, index) => (
+                <option key={`${sizeName}-${String(index)}`} value={sizeName}>{sizeName}</option>
               ))}
             </select>
         </label>
@@ -74,6 +76,9 @@ function App() {
         color={color}
         size={size}
       />
+    </Box>
+    <Box title="Counter">
+      <Counter />
     </Box>
   </div>
   );
