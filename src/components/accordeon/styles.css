@@ -57,3 +57,8 @@
   padding: 3rem 0;
   font-size: 3rem;
 }
+
+.active-item {
+  text-align: left;
+  color: var(--font-color);
+}

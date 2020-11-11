@@ -1,56 +1,56 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
-export default class Item extends Component {
-  constructor(props) {
-    super(props);
+export default function Item({
+  title,
+  size,
+  color,
+  text,
+  setTitle,
+  clearTitles,
+  index,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
 
-    this.state = {
-      isOpen: false,
-    };
+  const toggle = () => {
+    setIsOpen(!isOpen);
+    const activeTitle = { title, index };
+    if(!isOpen) {
+      setTitle(activeTitle);
+    }
+    if (isOpen) {
+      clearTitles(activeTitle);
+    }
   }
 
-  toggle = () => {
-    this.setState({ isOpen: !this.state.isOpen});
-  }
-
-  render() {
-    const {
-      title,
-      size,
-      text,
-      color,
-    } = this.props;
-    const { isOpen } = this.state;
-
-    return (
-      <div className={`accordeon__item accordeon__item--${size}`}>
-        <button
-          type="button"
-          className={`accordeon__toggle accordeon__toggle--${size} accordeon__toggle--${color}`}
-          onClick={this.toggle}
-        >
-          {title}
-          <i className={isOpen ? 'accordeon__icon accordeon__icon--opened' : 'accordeon__icon'} />
-        </button>
-        <div
-          className={`
-            accordeon__text
-            accordeon__text--${size}
-            ${isOpen ? 'accordeon__text--visible' : ''}
-          `}
-        >
-          {text}
-        </div>
+  return (
+    <div className={`accordeon__item accordeon__item--${size}`}>
+      <button
+        type="button"
+        className={`accordeon__toggle accordeon__toggle--${size} accordeon__toggle--${color}`}
+        onClick={toggle}
+      >
+        {title}
+        <i className={isOpen ? 'accordeon__icon accordeon__icon--opened' : 'accordeon__icon'} />
+      </button>
+      <div
+        className={`
+          accordeon__text
+          accordeon__text--${size}
+          ${isOpen ? 'accordeon__text--visible' : ''}
+        `}
+      >
+        {text}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 Item.propTypes = {
   title: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   text: PropTypes.string,
   color: PropTypes.oneOf(['primary', 'orange', 'green', 'red']),
 };
