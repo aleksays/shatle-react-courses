@@ -1,0 +1,55 @@
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: var(--light-color);
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+}
+
+.small {
+  width: 30%;
+}
+
+.medium {
+  width: 75%;
+}
+
+.large {
+  width: 90%;
+}
+
+.header {
+  min-height: 70px;
+  padding: 1rem;
+  border-bottom: 1px solid var(--grey-light-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+ font-size: 1.5rem;
+ color: var(--font-color);
+}
+
+.body {
+  padding: 1rem;
+}
+
+.hideModal {
+  border: none;
+  cursor: pointer;
+  background: none;
+}
