@@ -1,0 +1,27 @@
+.nav {
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid var(--grey-light-color);
+}
+
+.item {
+  position: relative;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey-color);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  padding: 6px 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
