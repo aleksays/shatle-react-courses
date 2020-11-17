@@ -7,7 +7,10 @@ import Accordeon from './components/accordeon';
 import useModal from './hooks/useModal';
 import PortalModal from './components/common/modal/portal-modal';
 import accordeonList from './data/accordeonList.json';
+import tabsList from './data/tabsList.json';
+import { TabsNav, TabsContent } from './components/tabs';
 import FormModal from './components/form-modal';
+import TabsProvider from './context/tabs/tabsProvider';
 import './App.css';
 
 const list = [
@@ -98,6 +101,14 @@ function App() {
         color={color}
         size={size}
       />
+    </Box>
+    <Box title="Tabs with context">
+      <TabsProvider>
+        <TabsNav items={tabsList} />
+        <div style={{ position: 'relative', minHeight: '300px'}}>
+          {tabsList.map((item, index) => (<TabsContent item={item} key={`${item}--${String(index)}`} />))}
+        </div>
+      </TabsProvider>
     </Box>
   </div>
   );

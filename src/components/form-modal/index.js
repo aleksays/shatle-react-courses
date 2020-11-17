@@ -16,9 +16,10 @@ export default function FormModal({ size, title}) {
   }
 
   function handleSubmit(e) {
-    alert(`Hello ${name}, your sex is: ${sex}. File: ${e.target.files[0].name}`)
+    alert(`Name: ${name}, Sex: ${sex}, File: ${inputFileRef.current.files[0].name}`);
     e.preventDefault();
   }
+
 
   return (
     <Modal title={title} size={size}>
@@ -44,7 +45,7 @@ export default function FormModal({ size, title}) {
         </div>
         <div className="fieldbox">
           <label htmlFor="sex">File: </label>
-          <input type="file" ref={inputFileRef}/>
+          <input type="file" multiple ref={inputFileRef}/>
         </div>
         <Button type="submit">Submit</Button>
       </form>
